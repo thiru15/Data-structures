@@ -1,0 +1,19 @@
+"BINARY TREE INORDER TRAVERSAL"
+
+class Solution:
+    global l,l1
+    l=[]
+    l1=[]
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        ans = []
+        if not root:
+            return ans
+        stack = []
+        while root or stack:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            ans.append(root.val)
+            root = root.right
+        return ans        
