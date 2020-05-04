@@ -1,0 +1,12 @@
+class Solution:
+    # @param {TreeNode} root
+    # @return {boolean}
+	def isValidBST(self, root):
+		if root is None:
+			return True
+		return self.check(root, float("-inf"), float("inf"))
+		
+	def check(self, root, lower, upper):
+		return (root.val>lower and root.val<upper) \
+		       and (self.check(root.left, lower, root.val) if root.left is not None else True) \
+			   and (self.check(root.right, root.val, upper) if root.right is not None else True)
